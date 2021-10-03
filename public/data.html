@@ -23,7 +23,7 @@
     <script>
 
         function showAll() {
-            const url = 'http://localhost:3000/data'
+            const url = '/data'
             superagent
                 .get(url)
                 .end(function (err, res) {
