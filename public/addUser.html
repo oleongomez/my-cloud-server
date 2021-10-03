@@ -41,7 +41,7 @@
                 + (date.getDate())
 
             const user = { name, dateOfBirth, email, username, password, phone, streetaddress, citystatezip, latitude, longitude, avatar }
-            const url = 'http://localhost:3000/add-user'
+            const url = '/add-user'
             console.log("Sending user: "+JSON.stringify(user))
             superagent
                 .post(url)
