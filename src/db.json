@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "name": "Mrs. Eliza Lang",
+      "dateOfBirth": "1964-5-2",
+      "email": "Eliza_Lang61@yahoo.com",
+      "username": "Eliza.Lang18",
+      "password": "y7uyBnhNKDUZa0U",
+      "phone": "1-662-508-5101 x37737",
+      "streetaddress": "1892 Goyette Pass",
+      "citystatezip": "Ryanville, OK 31129-8183",
+      "latitude": "18.2784",
+      "longitude": "0.1488",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/malykhinv/128.jpg"
+    },
+    {
+      "name": "Irma Bosco",
+      "dateOfBirth": "1959-8-4",
+      "email": "Irma12@yahoo.com",
+      "username": "Irma.Bosco76",
+      "password": "aaTgOBctDEbTei5",
+      "phone": "713.394.8959",
+      "streetaddress": "505 Darryl Square",
+      "citystatezip": "New Crawford, CA 81233",
+      "latitude": "11.9299",
+      "longitude": "-51.6558",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/liminha/128.jpg"
+    },
+    {
+      "name": "Dorothy Mitchell",
+      "dateOfBirth": "1953-11-13",
+      "email": "Dorothy.Mitchell@hotmail.com",
+      "username": "Dorothy.Mitchell",
+      "password": "IoCooLm90bW9wwT",
+      "phone": "1-481-642-6588",
+      "streetaddress": "3377 Boyle Ways",
+      "citystatezip": "Okunevachester, OH 54414",
+      "latitude": "28.8334",
+      "longitude": "3.7622",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/carlosm/128.jpg"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npmbootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://unpkg.com/superagent"></script>
+    <title>Add User</title>
+
+</head>
+
+<body>
+    <div>
+        <button type="button" class="btn btn-primary" style="font-size: 3em;" onclick="showAll()">show All
+            Users</button>
+    </div>
+    <div id="status"></div>
+    <script src="faker.min.js" type="text/javascript"></script>
+    <script>
+
+        function showAll() {
+            const url = 'http://localhost:3000/data'
+            superagent
+                .get(url)
+                .end(function (err, res) {
+                    if (err) {
+                        console.log(err)
+                    }
+                    else {
+                        console.log(res.body)
+                        if (res.statusCode == 200) {
+                            html ='<div class="grid-container">'
+                            res.body.forEach(element => {
+                                html += `
+                                <div class="card" style="width: 18rem;">
+                                    <img src="${element.avatar}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <div class="card-title">${element.name}</div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Date of birt: ${element.dateOfBirth}</li>
+                                            <li class="list-group-item">email: ${element.email}</li>
+                                            <li class="list-group-item">username: ${element.username}</li>
+                                            <li class="list-group-item">password: ${element.password}</li>
+                                            <li class="list-group-item">phone: ${element.phone}</li>
+                                            <li class="list-group-item">Address: ${element.streetaddress}</li>
+                                            <li class="list-group-item">City/ZIP: ${element.citystatezip}</li>
+                                            <li class="list-group-item">lat/lon: ${element.latitude}/${element.longitude}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                `
+                            });
+                            html += '</div>'
+                            document.getElementById('status').innerHTML = html
+                        }
+                    }
+                })
+        }
+    </script>
+</body>
+
+</html>

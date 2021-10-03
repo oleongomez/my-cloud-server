@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npmbootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://unpkg.com/superagent"></script>
+    <title>Add User</title>
+
+</head>
+
+<body>
+    <div>
+        <button type="button" class="btn btn-primary" style="font-size: 3em;" onclick="add()">Add User</button>
+    </div>
+    <div id="status"></div>
+    <script src="faker.min.js" type="text/javascript"></script>
+    <script>
+        
+        function add() {
+            const firstName = faker.name.firstName()
+            const lastName = faker.name.lastName()
+            const date = faker.date.past(50, new Date("Sat Sep 20 1992 21:35:02 GMT+0200(CEST)"))
+
+            const name = faker.name.findName(firstName, lastName)
+            const email = faker.internet.email(firstName, lastName)
+            const username = faker.internet.userName(firstName, lastName)
+            const password = faker.internet.password()
+            const phone = faker.phone.phoneNumber()
+            const streetaddress = faker.address.streetAddress()
+            const citystatezip = faker.address.city() + ', ' + faker.address.stateAbbr() + ' ' + faker.address.zipCode()
+
+            const latitude = faker.address.latitude()
+            const longitude = faker.address.longitude()
+            const avatar = faker.internet.avatar()
+            const dateOfBirth = date.getFullYear() + '-'
+                + (date.getMonth() + 1) + '-'
+                + (date.getDate())
+
+            const user = { name, dateOfBirth, email, username, password, phone, streetaddress, citystatezip, latitude, longitude, avatar }
+            const url = 'http://localhost:3000/add-user'
+            console.log("Sending user: "+JSON.stringify(user))
+            superagent
+                .post(url)
+                .set('Content-Type', 'application/json')
+                .send(JSON.stringify(user))
+                .end(function (req, res, err) {
+                    if (err) {
+                        console.log(err)
+                    }
+                    else {
+                        console.log(res)
+                        if (res.statusCode == 200) {
+                            document.getElementById('status').innerHTML = `
+                        <b> Response: Status  Code 200.</b>
+                        The HTTP Request has succeded.<br>
+                        User:${name}<br>
+                        ${new Date()}
+                        `
+                        }
+                    }
+                })
+        }
+    </script>
+</body>
+
+</html>
